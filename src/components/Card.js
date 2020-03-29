@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import WeatherIcon from './WeatherIcon';
 
 const Card = props => {
-    const { data } = props;
+    const { data, onPress } = props;
+    const Component = onPress ? TouchableOpacity : View;
 
     return (
-        <View style={styles.itemContainer}>
+        <Component onPress={onPress} style={styles.itemContainer}>
             <View style={styles.textContainer}>
                 <Text style={styles.date}>{data.date}</Text>
                 <Text style={styles.smallTemperature}>{data.temperature}</Text>
@@ -15,7 +16,7 @@ const Card = props => {
             <View style={styles.iconContainer}>
                 <WeatherIcon weather={data.weather} />
             </View>
-        </View>
+        </Component>
     );
 };
 
