@@ -1,45 +1,74 @@
 import React from 'react';
-import { StyleSheet, View, Text, StatusBar, Image } from 'react-native';
+import { StyleSheet, View, Text, StatusBar, Image, ScrollView } from 'react-native';
 
 const sunny = require('./assets/sunny.png');
+const rainy = require('./assets/rainy.png');
+const thunderstorm = require('./assets/thunderstorm.png');
 
 const dummyData = [
   {
     id: 0,
     date: '1/4/2020, Wed',
-    weather: 'sunny',
-    temperature: 87,
+    weather: 'Sunny',
+    temperature: '79-87',
   },
   {
     id: 1,
     date: '2/4/2020, Thur',
-    weather: 'rainy',
-    temperature: 80,
+    weather: 'Rainy',
+    temperature: '70-80',
   },
   {
     id: 2,
     date: '3/4/2020. Fri',
-    weather: 'thunderstorm',
-    temperature: 78,
+    weather: 'Thunderstorm',
+    temperature: '76-78',
   },
 ];
 
 const App = () => {
+  const renderIcon = weather => {
+    switch (weather) {
+      case 'Sunny':
+        return <Image source={sunny} style={styles.iconStyle} />;
+      case 'Rainy':
+        return <Image source={rainy} style={styles.iconStyle} />;
+      case 'Thunderstorm':
+        return <Image source={thunderstorm} style={styles.iconStyle} />;
+    }
+  };
+
+  const renderListItem = item => {
+    return (
+      <View style={styles.itemContainer}>
+        <View style={styles.textContainer}>
+          <Text style={styles.date}>{item.date}</Text>
+          <Text style={styles.smallTemperature}>{item.temperature}</Text>
+          <Text style={styles.weather}>{item.weather}</Text>
+        </View>
+        <View style={styles.iconContainer}>{renderIcon(item.weather)}</View>
+      </View>
+    );
+  };
+
   return (
     <>
       <StatusBar barStyle="light-content" />
       <View style={styles.header}>
         <Text style={styles.headerText}>Singapore, Singapore</Text>
       </View>
-      <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.text}>Wednesday, 11 Jan 2020 </Text>
         <Text style={styles.temperature}>82</Text>
         <Text style={styles.weather}>Sunny</Text>
         <View style={styles.weatherIconWrapper}>
           <Image source={sunny} style={styles.weatherIcon} />
         </View>
-        {/* render list view dynamically here - using dummyData provided */}
-      </View>
+        {dummyData &&
+          dummyData.map(item => {
+            return renderListItem(item);
+          })}
+      </ScrollView>
     </>
   );
 };
@@ -92,6 +121,45 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     resizeMode: 'contain',
+  },
+  iconStyle: {
+    width: 80,
+    height: 80,
+    resizeMode: 'contain',
+  },
+  itemContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    margin: 20,
+    padding: 10,
+    borderRadius: 20,
+    borderColor: 'grey',
+    borderWidth: 0.3,
+  },
+  iconContainer: {
+    alignSelf: 'center',
+    justifyContent: 'center',
+    paddingRight: 40,
+  },
+  textContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
+  date: {
+    textAlign: 'left',
+    color: '#22252A',
+    fontWeight: '400',
+    fontSize: 16,
+    paddingVertical: 10,
+  },
+  smallTemperature: {
+    textAlign: 'center',
+    color: '#22252A',
+    fontWeight: '500',
+    fontSize: 28,
+    paddingVertical: 10,
   },
 });
 
