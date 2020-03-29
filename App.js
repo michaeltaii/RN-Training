@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text, StatusBar, Image, ScrollView } from 'react-native';
+import Card from './src/components/Card';
 
 const sunny = require('./assets/sunny.png');
-const rainy = require('./assets/rainy.png');
-const thunderstorm = require('./assets/thunderstorm.png');
 
 const dummyData = [
   {
@@ -27,30 +26,6 @@ const dummyData = [
 ];
 
 const App = () => {
-  const renderIcon = weather => {
-    switch (weather) {
-      case 'Sunny':
-        return <Image source={sunny} style={styles.iconStyle} />;
-      case 'Rainy':
-        return <Image source={rainy} style={styles.iconStyle} />;
-      case 'Thunderstorm':
-        return <Image source={thunderstorm} style={styles.iconStyle} />;
-    }
-  };
-
-  const renderListItem = item => {
-    return (
-      <View style={styles.itemContainer}>
-        <View style={styles.textContainer}>
-          <Text style={styles.date}>{item.date}</Text>
-          <Text style={styles.smallTemperature}>{item.temperature}</Text>
-          <Text style={styles.weather}>{item.weather}</Text>
-        </View>
-        <View style={styles.iconContainer}>{renderIcon(item.weather)}</View>
-      </View>
-    );
-  };
-
   return (
     <>
       <StatusBar barStyle="light-content" />
@@ -66,7 +41,7 @@ const App = () => {
         </View>
         {dummyData &&
           dummyData.map(item => {
-            return renderListItem(item);
+            return <Card key={item.id} data={item} />;
           })}
       </ScrollView>
     </>
