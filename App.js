@@ -1,7 +1,28 @@
 import React from 'react';
 import { StyleSheet, View, Text, StatusBar, Image } from 'react-native';
 
-const sunny = require('./assets/sunny.png')
+const sunny = require('./assets/sunny.png');
+
+const dummyData = [
+  {
+    id: 0,
+    date: '1/4/2020, Wed',
+    weather: 'sunny',
+    temperature: 87,
+  },
+  {
+    id: 1,
+    date: '2/4/2020, Thur',
+    weather: 'rainy',
+    temperature: 80,
+  },
+  {
+    id: 2,
+    date: '3/4/2020. Fri',
+    weather: 'thunderstorm',
+    temperature: 78,
+  },
+];
 
 const App = () => {
   return (
@@ -17,6 +38,7 @@ const App = () => {
         <View style={styles.weatherIconWrapper}>
           <Image source={sunny} style={styles.weatherIcon} />
         </View>
+        {/* render list view dynamically here - using dummyData provided */}
       </View>
     </>
   );
