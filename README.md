@@ -2,29 +2,16 @@
 
 Create a weather app using React Native
 
-## Installation
+## Second Lab
 
-Clone from master branch to start. After cloning, run
+Create a listview using the dummy data provided. Render item dynamically using the icon assets.
 
-```bash
-npm install
-```
-
-To run on IOS, run
-```bash
-cd ios && pod install
-```
-
-## First Lab
-
-Create a simple header & display date, weather & icon using hardcoded dummy data & add styling.
-
-![Lab 1 screenshot](/assets/screenshots/lab1.png)
+![Lab 2 screenshot](/assets/screenshots/lab2.png)
 
 
 ## Completion
 When you completed the exercise, you may checkout to branch. 
 
 ```bash
-1-basic-with-dummy-data-solution
+2-listview-solution
 ```
