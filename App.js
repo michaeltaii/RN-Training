@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 import Home from './src/screen/Home';
 import Reminder from './src/screen/Reminder';
 
@@ -24,7 +24,7 @@ function App() {
           name="Home"
           component={Home}
           options={{
-            title: 'Singapore, Singapore',
+            title: 'Kuala Lumpur, Malaysia',
           }}
         />
         <Stack.Screen name="Reminder" component={Reminder} />
